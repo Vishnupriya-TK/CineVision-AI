@@ -46,9 +46,12 @@ class MoviePredictor:
             self.target_encoder = self.metrics.get("target_encoder")
             self._loaded = True
             return True
-        except Exception:
-            self._loaded = False
-            return False
+        # except Exception:
+        #     self._loaded = False
+        #     return False
+        except Exception as e:
+            print("MODEL LOAD ERROR:", e)
+            raise
 
     @property
     def is_ready(self) -> bool:
